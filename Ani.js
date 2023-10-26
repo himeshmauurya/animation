@@ -29,6 +29,8 @@ export default function Ani() {
   const width = useSharedValue(0);
   const height = useSharedValue(0);
  
+  const width1 = useSharedValue(120);
+  const height1 = useSharedValue(120);
   
   const scale = useSharedValue(1);
 
@@ -82,10 +84,10 @@ export default function Ani() {
     return {
       transform: [
         {
-          translateX: -positionX1.value
+          translateX: -positionX2.value
         },
         {
-          translateY:-positionY1.value
+          translateY:-positionY2.value
         },
         { scale: scale.value }
       ],
@@ -97,14 +99,16 @@ export default function Ani() {
     scale.value = withSequence(
       withSpring(1.3, { damping: 2, stiffness: 80 }),
       withSpring(1, { damping: 2, stiffness: 80 },()=>{
-        positionX1.value = withTiming(100, { duration: 2000, easing: Easing.linear } )
-        positionY1.value=withTiming(150, { duration: 2000, easing: Easing.linear })
-       positionX2.value=withTiming(100, { duration: 2000, easing: Easing.linear })
+        positionX1.value = withTiming(57, { duration: 2000, easing: Easing.linear } )
+        positionY1.value=withTiming(110, { duration: 2000, easing: Easing.linear })
+       positionX2.value=withTiming(75, { duration: 2000, easing: Easing.linear })
         // positionY2.value = 150; 
-        positionY2.value=withTiming(150, { duration: 2000, easing: Easing.linear })
+        positionY2.value=withTiming(110, { duration: 2000, easing: Easing.linear })
        
-        width.value = withTiming(220,{  duration:2000,easing: Easing.linear,});
-        height.value = withTiming(220,{  duration:2000,easing: Easing.linear,});
+        width.value = withTiming(305,{  duration:2000,easing: Easing.linear,});
+        height.value = withTiming(305,{  duration:2000,easing: Easing.linear,});
+        width1.value = withTiming(200,{  duration:2000,easing: Easing.linear,});
+        height1.value = withTiming(200,{  duration:2000,easing: Easing.linear,});
       opacity.value= withTiming(1, {duration:2000, easing: Easing.linear});
       }),
       
@@ -151,6 +155,8 @@ export default function Ani() {
         );
       }),
     );
+    width1.value = withTiming(120,{  duration:2000,easing: Easing.linear,});
+    height1.value = withTiming(120,{  duration:2000,easing: Easing.linear,});
     width.value = withTiming(0,{  duration:2000,easing: Easing.linear,});
     height.value = withTiming(0,{  duration:2000,easing: Easing.linear,});
   opacity.value= withTiming(0, {duration:2000, easing: Easing.linear});
@@ -173,21 +179,41 @@ export default function Ani() {
       />
     <View style={styles.contentContainer}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-        <Animated.View style={[styles.box, animatedChanged]}>
-        <Image source={require('./FullWhite/mindful.png')} style={styles.img}/>
-        </Animated.View>
-        <Animated.View style={[styles.box, animatedChanged1]}>
+        {/* <Animated.View style={[styles.box, animatedChanged,{height:height1,width:width1,borderWidth:1,borderColor:'white'}]}>
+        <Image source={require('./FullWhite/mindful.png')} style={[styles.img]}/>
+        </Animated.View> */}
+         <Animated.Image
+      source={require('./FullWhite/mindful.png')}
+        style={[styles.box,{
+          height:height1,width:width1
+        },animatedChanged]}
+      />
+       <Animated.Image
+      source={require('./FullWhite/perfrom.png')}
+        style={[styles.box,{
+          height:height1,width:width1
+        },animatedChanged1]}
+      />
+        {/* <Animated.View style={[styles.box, animatedChanged1]}>
         <Image source={require('./FullWhite/perfrom.png')} style={styles.img}/>
-        </Animated.View>
+        </Animated.View> */}
       </View>
 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-        <Animated.View style={[styles.box, animatedChanged3]}>
-          <Image source={require('./FullWhite/fuel.png')} style={styles.img}/>
-        </Animated.View>
-        <Animated.View style={[styles.box, animatedChanged4]}>
-        <Image source={require('./FullWhite/restore.png')} style={styles.img}/>
-        </Animated.View>
+      <Animated.Image
+      source={require('./FullWhite/fuel.png')}
+        style={[styles.box,{
+          height:height1,width:width1
+        },animatedChanged3]}
+      />
+       
+         <Animated.Image
+      source={require('./FullWhite/restore.png')}
+        style={[styles.box,{
+          height:height1,width:width1
+        },animatedChanged4]}
+      />
+      
       </View>
     </View>
   </View>
@@ -213,7 +239,7 @@ const styles = StyleSheet.create({
     // height: 220,
     // width:220,
     justifyContent: 'space-between',
-    // borderWidth: 1,
+     borderWidth: 1,
    borderColor: 'white',
     
   },
@@ -229,11 +255,11 @@ const styles = StyleSheet.create({
   box: {
     height: 120,
     width: 120,
-    // borderWidth: 1,
-   borderColor: '#b58df1',
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+   //  borderWidth: 1,
+   //borderColor: '#b58df1',
+    //borderRadius: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   img:{
     height: 120,
