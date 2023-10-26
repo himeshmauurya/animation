@@ -29,8 +29,8 @@ export default function Ani() {
   const width = useSharedValue(0);
   const height = useSharedValue(0);
  
-  const width1 = useSharedValue(100);
-  const height1 = useSharedValue(100);
+  const width1 = useSharedValue(120);
+  const height1 = useSharedValue(120);
   
   const scale = useSharedValue(1);
 
@@ -101,14 +101,14 @@ export default function Ani() {
       withSpring(1, { damping: 2, stiffness: 80 },()=>{
         positionX1.value = withTiming(57, { duration: 2000, easing: Easing.linear } )
         positionY1.value=withTiming(110, { duration: 2000, easing: Easing.linear })
-       positionX2.value=withTiming(57, { duration: 2000, easing: Easing.linear })
+       positionX2.value=withTiming(75, { duration: 2000, easing: Easing.linear })
         // positionY2.value = 150; 
         positionY2.value=withTiming(110, { duration: 2000, easing: Easing.linear })
        
         width.value = withTiming(305,{  duration:2000,easing: Easing.linear,});
         height.value = withTiming(305,{  duration:2000,easing: Easing.linear,});
-        width1.value = withTiming(190,{  duration:2000,easing: Easing.linear,});
-        height1.value = withTiming(190,{  duration:2000,easing: Easing.linear,});
+        width1.value = withTiming(200,{  duration:2000,easing: Easing.linear,});
+        height1.value = withTiming(200,{  duration:2000,easing: Easing.linear,});
       opacity.value= withTiming(1, {duration:2000, easing: Easing.linear});
       }),
       
@@ -155,8 +155,8 @@ export default function Ani() {
         );
       }),
     );
-    width1.value = withTiming(100,{  duration:2000,easing: Easing.linear,});
-    height1.value = withTiming(100,{  duration:2000,easing: Easing.linear,});
+    width1.value = withTiming(120,{  duration:2000,easing: Easing.linear,});
+    height1.value = withTiming(120,{  duration:2000,easing: Easing.linear,});
     width.value = withTiming(0,{  duration:2000,easing: Easing.linear,});
     height.value = withTiming(0,{  duration:2000,easing: Easing.linear,});
   opacity.value= withTiming(0, {duration:2000, easing: Easing.linear});
@@ -253,12 +253,17 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   box: {
-    height: 100,
-    width: 100,
+    height: 120,
+    width: 120,
+   //  borderWidth: 1,
+   //borderColor: '#b58df1',
+    //borderRadius: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   img:{
-    height: 100,
-    width: 100,
+    height: 120,
+    width: 120,
   },
   text: {
     color: '#b58df1',
